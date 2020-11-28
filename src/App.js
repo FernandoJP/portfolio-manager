@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from 'react';
+import { Route, Switch, Redirect, BrowserRouter } from 'react-router-dom';
+import { withRouter } from "react-router";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import PortfolioManager from './containers/PortfolioManager/PortfolioManager';
+import Layout from './hoc/Layout/Layout';
+
+class App extends Component {
+
+  render() {
+    let routes = (
+      <BrowserRouter>
+        <Switch>
+          <Route path="/teste" component={PortfolioManager} />
+          <Route path="/" exact component={PortfolioManager} />
+          <Redirect to="/" />
+        </Switch>
+      </BrowserRouter>
+    );
+
+    return (
+      <div>
+        <Layout>
+          {routes}
+        </Layout>
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(App);
+
