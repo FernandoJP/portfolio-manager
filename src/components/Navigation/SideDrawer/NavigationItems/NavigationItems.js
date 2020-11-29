@@ -9,23 +9,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
 const navigationList = [
     { name: 'My investment return', icon: <AssessmentIcon /> },
     { name: 'New investment data', icon: <NoteAddIcon /> },
 ]
 
-function NavigationItems (props) {
+function NavigationItems(props) {
     const classes = useStyles();
 
-    return (<List>
-        {navigationList.map((navigation) => (
-            <ListItem button key={navigation.name}>
-                <ListItemIcon className={classes.navigationIcon}>{navigation.icon}</ListItemIcon>
-                <ListItemText primary={navigation.name}></ListItemText>
-            </ListItem>
-        ))}
-    </List>)
+    return (
+        <List>
+            {navigationList.map((navigation) => (
+                <ListItem button key={navigation.name}>
+                    <ListItemIcon className={classes.navigationIcon}>{navigation.icon}</ListItemIcon>
+                    <ListItemText primary={navigation.name}></ListItemText>
+                </ListItem>
+            ))}
+        </List>
+    )
 }
 
 

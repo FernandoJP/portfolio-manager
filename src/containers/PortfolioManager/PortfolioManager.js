@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Balance from '../../components/Balance/Balance';
+
 class PortfolioManager extends Component {
 
   componentDidMount() {
@@ -10,6 +12,7 @@ class PortfolioManager extends Component {
     return (
       <div>
         <h1>Portfolio Manager</h1>
+        <Balance />
       </div>
     )
   }
