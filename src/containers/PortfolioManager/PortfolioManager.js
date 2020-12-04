@@ -1,21 +1,42 @@
 import React, { Component } from 'react';
+import { withStyles } from '@material-ui/core/styles';
 
-import Balance from '../../components/Balance/Balance';
+import ComparatorCard from '../../components/ComparatorCard/ComparatorCard';
+
+const useStyles = theme => ({
+  root: {
+    display: 'flex',
+  },
+  cardsSection: {
+    display: 'flex'
+  }
+});
+
+const cardComparators = {
+  ibov: 'IBOV',
+  ifix: 'IFIX',
+  sp500: 'S&P 500',
+  reit: 'REITs'
+}
 
 class PortfolioManager extends Component {
 
   componentDidMount() {
     console.log('inside PortfolioManager component');
   }
-
+  //TODO fazer com redux, não usar mais state
   render() {
+    const { classes } = this.props;
+
     return (
       <div>
-        <h1>Portfolio Manager</h1>
-        <Balance />
+        <section className={classes.cardsSection}>
+          <ComparatorCard type={cardComparators.ibov} />
+          <ComparatorCard type={cardComparators.ifix} />
+        </section>
       </div>
     )
   }
 }
 
-export default PortfolioManager;
+export default withStyles(useStyles)(PortfolioManager)

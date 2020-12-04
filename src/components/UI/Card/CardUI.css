@@ -1,0 +1,9 @@
+.CardUI {
+    margin: 30px;
+    border: 2px solid black;
+    min-width: 275;
+    position: relative;
+    background-size: cover;
+    color: #fff;
+    margin: auto 16px;
+}

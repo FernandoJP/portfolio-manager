@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { Component } from 'react';
 import clsx from 'clsx';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles, useTheme, withStyles } from '@material-ui/core/styles';
 import Drawer from '@material-ui/core/Drawer';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
@@ -13,10 +13,11 @@ import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 
 import NavigationItems from './NavigationItems/NavigationItems';
 import Header from '../Header/Header';
+import PortfolioManagerLogo from '../../PortfolioManagerLogo/PortfolioManagerLogo';
 
 const drawerWidth = 240;
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = theme => ({
   root: {
     display: 'flex',
   },
@@ -50,9 +51,6 @@ const useStyles = makeStyles((theme) => ({
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
     justifyContent: 'flex-end',
     minHeight: 0
   },
@@ -64,7 +62,8 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.leavingScreen,
     }),
     marginLeft: -drawerWidth,
-    zIndex: 9999
+    zIndex: 9999,
+    marginTop: 55
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
@@ -73,62 +72,77 @@ const useStyles = makeStyles((theme) => ({
     }),
     marginLeft: 0,
   }
-}));
+});
 
-function SideDrawer(props) {
-  const classes = useStyles();
-  const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+class SideDrawer extends Component {
+  state = {
+    open: true
+  }
 
-  const handleDrawerOpen = () => {
-    setOpen(true);
+  handleDrawerOpen = () => {
+    this.setState({open: true});
+    console.log('inside handleDrawerOpen', this.state.open);
   };
 
-  const handleDrawerClose = () => {
-    setOpen(false);
+  handleDrawerClose = () => {
+    this.setState({open: false});
   };
 
-  return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open,
-        })}
-      >
+  render() {
+    const { classes, theme } = this.props;
+    return (
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: this.state.open,
+          })}
+          >
 
-        <Header />
-
-      </AppBar>
-      <Drawer
-        className={classes.drawer}
-        variant="persistent"
-        anchor="left"
-        open={open}
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-      >
-        <div className={classes.drawerHeader}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+          <Header open={this.state.open} handleDrawerOpen={this.handleDrawerOpen}>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={this.handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, this.state.open && classes.hide)}
+              >
+              <MenuIcon />
           </IconButton>
-        </div>
+        </Header>
 
-        <NavigationItems />
+        </AppBar>
+        <Drawer
+          className={classes.drawer}
+          variant="persistent"
+          anchor="left"
+          open={this.state.open}
+          classes={{
+            paper: classes.drawerPaper,
+          }}
+        >
+          <div className={classes.drawerHeader}>
+            <PortfolioManagerLogo />
+            <IconButton onClick={this.handleDrawerClose}>
+              {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
+            </IconButton>
+          </div>
 
-      </Drawer>
-      <main
-        className={clsx(classes.content, {
-          [classes.contentShift]: open,
-        })}
-      >
-        <div className={classes.drawerHeader} />
-        {props.children}
-      </main>
-    </div>
-  );
+          <NavigationItems />
+
+        </Drawer>
+        <main
+          className={clsx(classes.content, {
+            [classes.contentShift]: this.state.open,
+          })}
+        >
+          <div className={classes.drawerHeader} />
+          {this.props.children}
+        </main>
+      </div>
+    )
+  }
 }
 
-export default SideDrawer;
+export default withStyles(useStyles, { withTheme: true })(SideDrawer)

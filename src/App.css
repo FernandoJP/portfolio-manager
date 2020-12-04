@@ -1,38 +1,19 @@
-.App {
-  text-align: center;
+@font-face {
+  font-family: 'Muli';
+  src: local('Muli'), url(./assets/fonts/Muli/Muli.ttf) format('truetype');
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+@font-face {
+  font-family: 'Muli Light';
+  src: local('Muli'), url(./assets/fonts/Muli/Muli-Light.ttf) format('truetype');
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+@font-face {
+  font-family: 'Muli Extra Light';
+  src: local('Muli'), url(./assets/fonts/Muli/Muli-ExtraLight.ttf) format('truetype');
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+@font-face {
+  font-family: 'Muli Bold';
+  src: local('Muli'), url(./assets/fonts/Muli/Muli-Bold.ttf) format('truetype');
 }
