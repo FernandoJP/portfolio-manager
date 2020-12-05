@@ -13,12 +13,13 @@ const colors = [
 ]
 
 const useStyles = makeStyles((theme) => ({
+    //variant 1
     bullet: {
         display: 'inline-block',
         margin: '0 2px',
         transform: 'scale(0.8)',
     },
-    title: {
+    variant1Title: {
         fontSize: 16,
         paddingTop: theme.spacing(1),
         color: '#fff',
@@ -52,6 +53,30 @@ const useStyles = makeStyles((theme) => ({
     center: {
         display: 'flex',
         justifyContent: 'center'
+    },
+
+    //variant 2
+    root: {
+        marginTop: theme.spacing(8)
+    },
+    icon: {
+        borderRadius: '50%',
+        background: '#85c4e9',
+        color: '#fff',
+        padding: 3,
+        fontSize: 28,
+    },
+    variant2Title: {
+        fontSize: 16,
+        display: 'flex',
+        paddingTop: theme.spacing(1),
+    },
+    titleText: {
+        marginLeft: theme.spacing(1),
+        paddingTop: 0,
+        color: 'color: rgba(0, 0, 0, 0.87)',
+        fontFamily: 'Muli Light, sans-serif',
+        fontSize: '1.1rem'
     }
 }));
 
@@ -60,24 +85,42 @@ function CardUI(props) {
     const classes = useStyles();
     const currentColor = colors.find(c => c.name === props.name);
 
-    return (
-        <Card className="CardUI" style={{ backgroundImage: 'url(' + props.image + ')' }}>
-            <div className={classes.cardBgImg} style={{ background: currentColor.cardColor }}>
-                <Typography className={classNames(classes.title, classes.center)} color="textSecondary" gutterBottom>
-                    {props.description}
-                </Typography>
-                <CardContent>
-                    <Typography variant="h5" component="h2" className={classNames(classes.middleCard, classes.center)}>
-                        <ExpandLessIcon className={classes.earningStatusIcon} /> 2.00%
-                    </Typography>
-                </CardContent>
-                <Typography variant="body2" component="p" className={classNames(classes.bottomCard, classes.center)} 
-                    style={{ background: currentColor.bottomBgColor, borderColor: currentColor.bottomBorderColor }} >
-                    1.00% above {props.name}
-                </Typography>
-            </div>
-        </Card>
-    )
+    switch (props.variant) {
+        case '1':
+            return (
+                <Card className="CardUI" style={{ backgroundImage: 'url(' + props.image + ')' }}>
+                    <div className={classes.cardBgImg} style={{ background: currentColor.cardColor }}>
+                        <Typography className={classNames(classes.variant1Title, classes.center)} color="textSecondary" gutterBottom>
+                            {props.description}
+                        </Typography>
+                        <CardContent>
+                            <Typography variant="h5" component="h2" className={classNames(classes.middleCard, classes.center)}>
+                                <ExpandLessIcon className={classes.earningStatusIcon} /> 2.00%
+                            </Typography>
+                        </CardContent>
+                        <Typography variant="body2" component="p" className={classNames(classes.bottomCard, classes.center)}
+                            style={{ background: currentColor.bottomBgColor, borderColor: currentColor.bottomBorderColor }} >
+                            1.00% above {props.name}
+                        </Typography>
+                    </div>
+                </Card>
+            )
+        case '2':
+            return (
+                <Card className={classes.root} variant="outlined">
+                    <CardContent>
+                        <Typography className={classes.variant2Title} color="textPrimary" gutterBottom>
+                            <props.icon className={classes.icon}></props.icon> 
+                            <Typography component="h2" className={classes.titleText}> {props.name} </Typography>
+                        </Typography>
+                        {props.children}
+                    </CardContent>
+                </Card>
+            )
+        default:
+            throw 'Invalid variant prop value';
+    }
+
 }
 
 export default CardUI;

@@ -1,6 +1,20 @@
-.line-chart__path {
-      stroke: #f6c3d0;
-    }
-.line-chart_path__circle {
-    fill: #f6c3d0;
+.line {
+    fill: none;
+    stroke: #eec5d0;
+    stroke-width: 4px;
+}
+
+.y-axis path, .x-axis path {
+    stroke: #85c4e9;
+    stroke-width: 4px;
+}
+  
+.grid line, .tick line {
+    stroke: lightgrey;
+    stroke-opacity: 0.7;
+    shape-rendering: crispEdges;
+}
+
+.grid path {
+    stroke-width: 0;
 }

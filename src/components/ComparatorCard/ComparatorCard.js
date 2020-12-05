@@ -24,7 +24,7 @@ class ComparatorCard extends Component {
         const comparator = comparatorData.find(c => c.name === this.props.type);
         console.log({comparator});
         return (
-            <CardUI name={comparator.name} description={comparator.description} image={comparator.image} />
+            <CardUI name={comparator.name} description={comparator.description} image={comparator.image} variant="1" />
         )
     }
 }

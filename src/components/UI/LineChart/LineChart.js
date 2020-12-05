@@ -107,6 +107,11 @@ function LineChart(props) {
                     .style('opacity', 0);
             })
             .on('mousemove', mousemove);
+
+        svg
+            .attr("preserveAspectRatio", "xMinYMin meet")
+            .attr("viewBox", "0 0 960 500")
+
         function mousemove(event) {
             const bisect = d3.bisector(d => d.label).left;
             const xPos = d3.mouse(this)[0];

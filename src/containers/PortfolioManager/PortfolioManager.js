@@ -3,6 +3,8 @@ import { withStyles } from '@material-ui/core/styles';
 
 import ComparatorCard from '../../components/ComparatorCard/ComparatorCard';
 import ReturnChart from '../../components/ReturnChart/ReturnChart';
+import CardUI from '../../components/UI/Card/CardUI';
+import TrendingUpIcon from '@material-ui/icons/TrendingUp';
 
 const useStyles = theme => ({
   root: {
@@ -39,7 +41,9 @@ class PortfolioManager extends Component {
         </section>
           
         <section>
+        <CardUI name="Returns graph" variant="2" icon={TrendingUpIcon}>
           <ReturnChart />
+        </CardUI>
         </section>
       </div>
     )

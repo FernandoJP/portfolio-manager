@@ -24,8 +24,7 @@ function ReturnChart() {
 
   return (
     <div className="App">
-      <button onClick={regenerateData}>Change Data</button>
-      <LineChart data={data} width={400} height={300} />
+      <LineChart data={data} width={800} height={300} />
     </div>
   );
 }
