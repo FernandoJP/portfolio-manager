@@ -4,7 +4,7 @@ import returnsMock from '../../assets/mock/returns.json';
 
 const initialState = returnsMock;
 
-const setReturns( state, action ) {
+const setReturns = ( state, action ) => {
     return state;
 }
 

@@ -27,7 +27,7 @@ class Header extends Component {
     const { classes } = this.props;
 
     return (
-      <Toolbar className={classes.toolbar}>
+      <Toolbar className={classes.toolbar} >
         {this.props.children}
         <SearchInput />
       </Toolbar>

@@ -94,7 +94,7 @@ class SideDrawer extends Component {
       <div className={classes.root}>
         <CssBaseline />
         <AppBar
-          position="fixed"
+          position="absolute"
           className={clsx(classes.appBar, {
             [classes.appBarShift]: this.state.open,
           })}

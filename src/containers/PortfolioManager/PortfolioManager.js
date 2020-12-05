@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 
 import ComparatorCard from '../../components/ComparatorCard/ComparatorCard';
+import ReturnChart from '../../components/ReturnChart/ReturnChart';
 
 const useStyles = theme => ({
   root: {
@@ -35,6 +36,10 @@ class PortfolioManager extends Component {
           <ComparatorCard type={cardComparators.ifix} />
           <ComparatorCard type={cardComparators.sp500} />
           <ComparatorCard type={cardComparators.reit} />
+        </section>
+          
+        <section>
+          <ReturnChart />
         </section>
       </div>
     )
