@@ -1,9 +1,16 @@
 .CardUI {
     margin: 30px;
-    border: 2px solid black;
-    min-width: 275;
+    min-width: 275px;
     position: relative;
     background-size: cover;
     color: #fff;
-    margin: auto 16px;
+    margin: auto 24px;
+}
+
+.CardUI:first-child {
+    margin-left: 0;
+}
+
+.CardUI:last-child {
+    margin-right: 0;
 }

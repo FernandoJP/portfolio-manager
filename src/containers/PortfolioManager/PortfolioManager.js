@@ -33,6 +33,8 @@ class PortfolioManager extends Component {
         <section className={classes.cardsSection}>
           <ComparatorCard type={cardComparators.ibov} />
           <ComparatorCard type={cardComparators.ifix} />
+          <ComparatorCard type={cardComparators.sp500} />
+          <ComparatorCard type={cardComparators.reit} />
         </section>
       </div>
     )

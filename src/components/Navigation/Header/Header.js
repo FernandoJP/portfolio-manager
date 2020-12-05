@@ -8,7 +8,7 @@ import SearchInput from '../../UI/SearchInput.js/SearchInput';
 
 const useStyles = theme => ({
   toolbar: {
-    minHeight: 128,
+    minHeight: 158,
     alignItems: 'flex-start',
     paddingTop: theme.spacing(1),
     paddingBottom: theme.spacing(2),

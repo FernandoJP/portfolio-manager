@@ -3,19 +3,16 @@ import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import classNames from 'classnames';
 
-import css from './CardUI.css';
+import './CardUI.css';
 
 const colors = [
     { name: 'IBOV', cardColor: 'rgba(102,187,106,0.8)', bottomBgColor: '#4caf50', bottomBorderColor: '#359B39' },
-    { name: 'S&P 500', cardColor: 'rgba(102,187,106,0.8)', bottomBgColor: '#4caf50', bottomBorderColor: '#359B39' },
-    { name: 'IFIX', cardColor: 'rgba(102,187,106,0.8)', bottomBgColor: '#4caf50', bottomBorderColor: '#359B39' },
-    { name: 'REITs', cardColor: 'rgba(102,187,106,0.8)', bottomBgColor: '#4caf50', bottomBorderColor: '#359B39' },
+    { name: 'S&P 500', cardColor: 'rgba(255,82,82,0.8)', bottomBgColor: '#FA3838', bottomBorderColor: '#DB3030' },
+    { name: 'IFIX', cardColor: 'rgba(4,126,210,0.8)', bottomBgColor: '#00ACC1', bottomBorderColor: '#078EA0' },
+    { name: 'REITs', cardColor: 'rgba(255,167,39,0.8)', bottomBgColor: '#FE9701', bottomBorderColor: '#DA860B' },
 ]
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-
-    },
     bullet: {
         display: 'inline-block',
         margin: '0 2px',
@@ -38,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
         fontSize: 30,
         fontFamily: 'Muli Bold, sans-serif',
         padding: theme.spacing(1),
+        color: '#fff'
     },
     earningStatusIcon: {
         display: 'flex',
@@ -49,6 +47,7 @@ const useStyles = makeStyles((theme) => ({
         padding: theme.spacing(1),
         fontFamily: 'Muli, sans-serif',
         border: '1px solid',
+        color: '#fff'
     },
     center: {
         display: 'flex',
@@ -59,11 +58,10 @@ const useStyles = makeStyles((theme) => ({
 function CardUI(props) {
 
     const classes = useStyles();
-    console.log(css);
     const currentColor = colors.find(c => c.name === props.name);
 
     return (
-        <Card className={css.CardUI} style={{ backgroundImage: 'url(' + props.image + ')' }}>
+        <Card className="CardUI" style={{ backgroundImage: 'url(' + props.image + ')' }}>
             <div className={classes.cardBgImg} style={{ background: currentColor.cardColor }}>
                 <Typography className={classNames(classes.title, classes.center)} color="textSecondary" gutterBottom>
                     {props.description}
