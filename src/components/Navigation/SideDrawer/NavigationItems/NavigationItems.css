@@ -1,0 +1,10 @@
+.svg-inline--fa {
+    font-size: 20px;
+    margin-left: 5px;
+}
+
+.MuiListItemIcon-root > svg:not(.svg-inline--fa):not(.MuiSvgIcon-root) {
+    min-height: 16px;
+    width: 21px;
+    margin-left: 4px;
+}
