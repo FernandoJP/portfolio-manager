@@ -24,7 +24,7 @@ function ReturnChart() {
 
   return (
     <div className="App">
-      <LineChart data={data} width={800} height={300} />
+      <LineChart data={data} width={window.innerWidth-239-150-48} height={300} />
     </div>
   );
 }

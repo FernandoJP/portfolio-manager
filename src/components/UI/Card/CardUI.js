@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import classNames from 'classnames';
 
 import './CardUI.css';
@@ -41,6 +42,7 @@ const useStyles = makeStyles((theme) => ({
     earningStatusIcon: {
         display: 'flex',
         alignSelf: 'center',
+        fontSize: 24,
     },
     bottomCard: {
         background: '#4caf50',
@@ -95,12 +97,13 @@ function CardUI(props) {
                         </Typography>
                         <CardContent>
                             <Typography variant="h5" component="h2" className={classNames(classes.middleCard, classes.center)}>
-                                <ExpandLessIcon className={classes.earningStatusIcon} /> 2.00%
+                                {props.indexPercentage >= 0 ? <ExpandLessIcon className={classes.earningStatusIcon} /> : <ExpandMoreIcon className={classes.earningStatusIcon} /> }
+                                {props.indexPercentage}
                             </Typography>
                         </CardContent>
                         <Typography variant="body2" component="p" className={classNames(classes.bottomCard, classes.center)}
                             style={{ background: currentColor.bottomBgColor, borderColor: currentColor.bottomBorderColor }} >
-                            1.00% above {props.name}
+                            {props.profitabilityPercentage} {props.profitabilityPercentage >= 0 ? 'above' : 'bellow'} {props.name}
                         </Typography>
                     </div>
                 </Card>
