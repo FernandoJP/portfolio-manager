@@ -17,7 +17,6 @@ function ReturnChart() {
         value,
         tooltipContent: `<b>x: </b>${i}<br><b>y: </b>${value}`
       });
-      console.log(chartData);
     }
     setData(chartData)
   }

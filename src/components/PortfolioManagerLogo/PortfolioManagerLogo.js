@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 4,
     },
     logoTextFirst: {
-        color: theme.palette.primary.main,
+        color: 'rgb(250, 56, 56)',
         fontWeight: 'light'
     },
     logoTextSecond: {

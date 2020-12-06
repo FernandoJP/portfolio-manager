@@ -5,6 +5,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 import clsx from 'clsx';
 
 import SearchInput from '../../UI/SearchInput.js/SearchInput';
+import HeaderButtons from '../HeaderButtons/HeaderButtons';
 
 const useStyles = theme => ({
   toolbar: {
@@ -30,6 +31,7 @@ class Header extends Component {
       <Toolbar className={classes.toolbar} >
         {this.props.children}
         <SearchInput />
+        <HeaderButtons />
       </Toolbar>
     )
   }

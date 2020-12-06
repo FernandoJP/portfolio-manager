@@ -81,7 +81,6 @@ class SideDrawer extends Component {
 
   handleDrawerOpen = () => {
     this.setState({open: true});
-    console.log('inside handleDrawerOpen', this.state.open);
   };
 
   handleDrawerClose = () => {

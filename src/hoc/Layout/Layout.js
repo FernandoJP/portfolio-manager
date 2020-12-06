@@ -17,10 +17,11 @@ const theme = createMuiTheme({
         primary: {
             // main: 'rgb(76,175,80)'
             // main: '#1DD925'
-            main: 'rgb(175,17,11)'
+            //main: 'rgb(175,17,11)'
+            main: '#85C4E9'
         },
         secondary: {
-             main: 'rgb(76,175,80)'
+             main: '#4CAF4E'
         }
     }
 });
