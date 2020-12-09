@@ -12,6 +12,7 @@ import { faIdBadge } from '@fortawesome/free-solid-svg-icons'
 import { faUserEdit } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import Flags from 'country-flag-icons/react/3x2'
+import { NavLink, withRouter } from 'react-router-dom';
 
 import './NavigationItems.css';
 
@@ -22,27 +23,33 @@ const useStyles = makeStyles((theme) => ({
     nested: {
         paddingLeft: theme.spacing(4),
     },
+    navLink: {
+        textDecoration: 'none',
+        color: 'inherit'
+    }
 }));
 
 const navigationList = [
-    { name: 'My investment return', icon: <AssessmentIcon /> },
-    { name: 'New investment data', icon: <NoteAddIcon /> },
+    { name: 'My investment return', icon: <AssessmentIcon />, path: '/' },
+    { name: 'New investment data', icon: <NoteAddIcon />, path: '/new-investment-data' },
     {
         name: 'Profile',
         icon: <FontAwesomeIcon icon={faUser} />,
+        path: 'profile',
         submenu: [
-            { name: 'My profile', icon: <FontAwesomeIcon icon={faIdBadge} /> },
-            { name: 'Edit profile', icon: <FontAwesomeIcon icon={faUserEdit} /> },
+            { name: 'My profile', icon: <FontAwesomeIcon icon={faIdBadge} />, path: 'my-profile' },
+            { name: 'Edit profile', icon: <FontAwesomeIcon icon={faUserEdit} />, path: 'edit-profile' },
         ]
     },
     {
         name: 'Indexes',
         icon: <FontAwesomeIcon icon={faFileContract} />,
+        path: 'indexes',
         submenu: [
-            { name: 'IBOV', icon: <Flags.BR /> },
-            { name: 'IFIX', icon: <FontAwesomeIcon icon={faWarehouse} style={{ fontSize: 16 }} /> },
-            { name: 'S&P 500', icon: <Flags.US /> },
-            { name: 'REITs', icon: <FontAwesomeIcon icon={faBuilding} style={{ fontSize: 18 }} /> },
+            { name: 'IBOV', icon: <Flags.BR />, path: 'indexes/ibov' },
+            { name: 'IFIX', icon: <FontAwesomeIcon icon={faWarehouse} style={{ fontSize: 16 }} />, path: 'indexes/ifix' },
+            { name: 'S&P 500', icon: <Flags.US />, path: 'indexes/sp500' },
+            { name: 'REITs', icon: <FontAwesomeIcon icon={faBuilding} style={{ fontSize: 18 }} />, path: 'indexes/reits' },
         ]
     },
 ]
@@ -58,8 +65,8 @@ function NavigationItems(props) {
     return (
         <List>
             {navigationList.map((navigation) => (
-                <div key={navigation.name}>
-                    <ListItem button button onClick={() => navigation.submenu && handleClick()}>
+                <NavLink exact to={navigation.path} key={navigation.name} className={classes.navLink}>
+                    <ListItem button onClick={() => navigation.submenu && handleClick()}>
                         <ListItemIcon className={classes.navigationIcon}>{navigation.icon}</ListItemIcon>
                         <ListItemText primary={navigation.name}></ListItemText>
                         {navigation.submenu ? open ? <ExpandLess /> : <ExpandMore /> : null}
@@ -78,11 +85,10 @@ function NavigationItems(props) {
                             </Collapse>
                         ))
                         : null}
-                </div>
+                </NavLink>
             ))}
         </List>
     )
 }
 
-
-export default NavigationItems;
+export default withRouter(NavigationItems);

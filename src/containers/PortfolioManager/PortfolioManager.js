@@ -27,7 +27,7 @@ class PortfolioManager extends Component {
   componentDidMount() {
     console.log('inside PortfolioManager component');
   }
-  
+
   render() {
     const { classes } = this.props;
 
@@ -39,11 +39,11 @@ class PortfolioManager extends Component {
           <ComparatorCard type={cardComparators.sp500} indexPercentage={1.9} profitabilityPercentage={-0.1} />
           <ComparatorCard type={cardComparators.reit} indexPercentage={-0.10} profitabilityPercentage={1.80} />
         </section>
-          
+
         <section>
-        <CardUI name="Returns graph" variant="2" icon={TrendingUpIcon}>
-          <ReturnChart />
-        </CardUI>
+          <CardUI name="Returns graph" variant="2" icon={TrendingUpIcon}>
+            <ReturnChart />
+          </CardUI>
         </section>
       </div>
     )

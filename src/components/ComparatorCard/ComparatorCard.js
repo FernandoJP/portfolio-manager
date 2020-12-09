@@ -27,8 +27,10 @@ class ComparatorCard extends Component {
             <CardUI 
                 name={comparator.name} 
                 description={comparator.description} 
-                image={comparator.image} variant="1" 
-                indexPercentage={this.props.indexPercentage} profitabilityPercentage={this.props.profitabilityPercentage}
+                image={comparator.image} 
+                variant="1" 
+                indexPercentage={this.props.indexPercentage} 
+                profitabilityPercentage={this.props.profitabilityPercentage}
              />
         )
     }
