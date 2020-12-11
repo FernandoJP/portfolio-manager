@@ -109,7 +109,6 @@ function CardUI(props) {
                 </Card>
             )
         case '2':
-            console.log(props.icon);
             return (
                 <Card className={classes.root} variant="outlined">
                     <CardContent>

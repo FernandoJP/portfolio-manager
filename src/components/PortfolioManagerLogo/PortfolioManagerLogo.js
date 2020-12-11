@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
         padding: 4,
     },
     logoTextFirst: {
-        color: theme.palette.primary.main,
+        color: 'rgb(175,17,11)',
         fontWeight: 'light'
     },
     logoTextSecond: {
@@ -32,8 +32,6 @@ function PortfolioManagerLogo(props) {
     const classes = useStyles();
 
     const theme = useTheme();
-
-    console.log(theme);
 
     return (
         <div className={classes.root}>

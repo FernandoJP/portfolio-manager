@@ -8,7 +8,6 @@ export const setReturnsData = (returnsData) => {
 }
 
 export const initReturnsData = (returnsData) => {
-    debugger;
     const updatedReturnsData = returnsData.map((currentReturn, i, returnsData) => {
         return {
             label: parseInt(currentReturn.day),
@@ -21,12 +20,6 @@ export const initReturnsData = (returnsData) => {
             tooltipContent: `<b>x: </b>${currentReturn.day}<br><b>y: </b>${currentReturn.value}`
         }
     });
-    console.log({ updatedReturnsData });
+
     return setReturnsData(updatedReturnsData);
 }
-
-// chartData.push({
-    //     label: i,
-    //     value,
-    //     tooltipContent: `<b>x: </b>${i}<br><b>y: </b>${value}`
-    //   });

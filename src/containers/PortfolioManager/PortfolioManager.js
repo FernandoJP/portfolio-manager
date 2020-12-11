@@ -23,11 +23,7 @@ const cardComparators = {
 }
 
 class PortfolioManager extends Component {
-
-  componentDidMount() {
-    console.log('inside PortfolioManager component');
-  }
-
+  
   render() {
     const { classes } = this.props;
 
