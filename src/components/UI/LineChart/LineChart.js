@@ -11,9 +11,14 @@ function LineChart(props) {
     }, [data]);
 
     function drawChart() {
+        console.log(d3.extent(data, function(d) { return d.value; }));
+        debugger;
+        console.log(Math.max.apply(Math, data.map(function(r) { return r.value; })));
+        console.log(Math.min.apply(Math, data.map(function(r) { return r.value; })));
+        console.log(d3);
         const margin = { top: 50, right: 50, bottom: 50, left: 50 };
-        const yMinValue = d3.min(data, d => d.value);
-        const yMaxValue = d3.max(data, d => d.value);
+        const yMinValue = Math.min.apply(Math, data.map(function(r) { return r.value; }));
+        const yMaxValue = Math.max.apply(Math, data.map(function(r) { return r.value; }));
         const xMinValue = d3.min(data, d => d.label);
         const xMaxValue = d3.max(data, d => d.label)
 
@@ -43,7 +48,7 @@ function LineChart(props) {
         const yScale = d3
             .scaleLinear()
             .range([height, 0])
-            .domain([0, yMaxValue]);
+            .domain([yMinValue, yMaxValue]);
         const line = d3
             .line()
             .x(d => xScale(d.label))

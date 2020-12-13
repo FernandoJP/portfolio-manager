@@ -59,7 +59,7 @@ const useStyles = makeStyles((theme) => ({
 
     //variant 2
     root: {
-        marginTop: theme.spacing(8)
+        marginTop: theme.spacing(2)
     },
     icon: {
         borderRadius: '50%',

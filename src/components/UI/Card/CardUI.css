@@ -4,7 +4,7 @@
     position: relative;
     background-size: cover;
     color: #fff;
-    margin: auto 24px;
+    margin: 0 24px 48px 24px;
 }
 
 .CardUI:first-child {

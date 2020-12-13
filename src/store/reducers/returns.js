@@ -2,20 +2,34 @@ import * as actionTypes from '../actions/actionTypes';
 import { updateObject } from '../utility';
 import returnsMock from '../../assets/mock/returns.json';
 
-const initialState = {
-    returnsData: Object.values(returnsMock.data)[0]
-}
-
-const setReturns = ( state, action ) => {
+const setReturns = (state, returnsData) => {
+    const updatedReturnsData = returnsData.map((currentReturn, i, returnsData) => {
+        const day = currentReturn.day || currentReturn.label;
+        return {
+            label: parseInt(day),
+            value: parseFloat(returnsData.slice(0, i + 1)
+                .reduce((total, current) => {
+                    return {
+                        value: parseFloat(total.value) + (parseFloat(current.value))
+                    }
+                }).value).toFixed(2),
+            tooltipContent: `<b>x: </b>${day}<br><b>y: </b>${currentReturn.value}`
+        }
+    });
     const updatedState = {
-        returnsData: action.returnsData
+        returnsData: updatedReturnsData
     }
-    return updateObject( state, updatedState );
+    console.log({ updatedState });
+    return updateObject(state, updatedState);
 }
 
-const reducer = (state = initialState, action ) => {
-    switch( action.type ) {
-        case actionTypes.SET_RETURNS: return setReturns( state, action );
+const initialState = {
+    returnsData: setReturns(null, Object.values(returnsMock.data)[0] ).returnsData
+}
+
+const reducer = (state = initialState, action) => {
+    switch (action.type) {
+        case actionTypes.SET_RETURNS: return setReturns(state, action.returnsData);
         default: return state;
     }
 }

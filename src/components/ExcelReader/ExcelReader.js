@@ -35,7 +35,7 @@ class ExcelReader extends Component {
         console.log(e.target.files[0]);
         var name = file.name;
         const reader = new FileReader();
-        reader.onload = (evt) => { // evt = on_file_select event
+        reader.onload = (evt) => {
             /* Parse data */
             const bstr = evt.target.result;
             const wb = XLSX.read(bstr, { type: 'binary' });
@@ -46,9 +46,26 @@ class ExcelReader extends Component {
             const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
             /* Update state */
             console.log("Data>>>" + data);
+
+            const updatedData = this.parseData(data);
+            this.props.onReadExcelFile(updatedData);
         };
         reader.readAsBinaryString(file);
     };
+
+    parseData = data => {
+        return data
+            .split('\n')
+            .map(line => line.split(','))
+            .filter(line => line[0] && line[1])
+            .map((line, i) =>  { 
+                return { 
+                    day: line[0],
+                    value: line[1],
+                    // accumulatedReturn: 0
+                 } 
+            });
+    }
 }
 
 export default withStyles(useStyles)(ExcelReader)

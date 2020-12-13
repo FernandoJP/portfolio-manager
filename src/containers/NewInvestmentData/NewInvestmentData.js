@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { withStyles } from '@material-ui/core/styles';
 import NoteAddIcon from '@material-ui/icons/NoteAdd';
+import { connect } from 'react-redux';
 
 import CardUI from '../../components/UI/Card/CardUI';
 import ExcelReader from '../../components/ExcelReader/ExcelReader';
 import ModelDownload from '../../components/ModelDownload/ModelDownload';
+import InvestmentDataTable from '../../components/InvestmentDataTable/InvestmentDataTable'
+import * as actions from '../../store/actions/returns';
 
 const useStyles = theme => ({
     card: {
@@ -24,23 +27,41 @@ class NewInvestmentData extends Component {
 
         return (
             <div>
-                <section>
-                    <CardUI name="New investment data" variant="2" icon={NoteAddIcon} className={classes.card}>
-                        <p>Upload an Excel or CSV file in order to set a new investment data.</p>
+                <CardUI name="New investment data" variant="2" icon={NoteAddIcon} className={classes.card}>
+                    <p>Upload an Excel or CSV file in order to set a new investment data.</p>
 
-                        <section className={classes.buttonsContainer}>
-                            <ExcelReader onReadExcelFile={this.onReadExcelFile} />
-                            <ModelDownload />
-                        </section>
-                    </CardUI>
-                </section>
+                    <section className={classes.buttonsContainer}>
+                        <ExcelReader onReadExcelFile={this.onReadExcelFileHandler} />
+                        <ModelDownload />
+                    </section>
+
+                    <section>
+                        <InvestmentDataTable />
+                    </section>
+                </CardUI>
             </div>
         )
     }
 
-    onReadExcelFile = (file) => {
-        console.log(file);
+    onReadExcelFileHandler = (file) => {
+        console.log({file});
+        this.props.onSetReturnsData(file);
     }
 }
 
-export default withStyles(useStyles)(NewInvestmentData)
+const mapStateToProps = state => {
+    return {
+        returnsData: state.returns.returnsData,
+    };
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        onSetReturnsData: (data) => {
+            console.log({data});
+            return dispatch(actions.setReturnsData(data))
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withStyles(useStyles)(NewInvestmentData));
