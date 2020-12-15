@@ -57,10 +57,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onSetReturnsData: (data) => {
-            console.log({data});
-            return dispatch(actions.setReturnsData(data))
-        },
+        onSetReturnsData: (data) => { 
+            dispatch(actions.setReturnsData(data));
+            dispatch(actions.setInvestmentData(data)) 
+        }
     }
 }
 

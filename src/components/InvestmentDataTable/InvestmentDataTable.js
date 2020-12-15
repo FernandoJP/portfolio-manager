@@ -1,47 +1,56 @@
 import React, { Component } from 'react';
 import { DataGrid } from '@material-ui/data-grid';
+import { connect } from 'react-redux';
+import { withStyles } from '@material-ui/core/styles';
 
 const columns = [
-    { field: 'day', headerName: 'Day', width: 90, type: 'number' },
+    { field: 'id', headerName: 'Day', width: 135, type: 'number', width: 180 },
     {
         field: 'variation',
         headerName: 'Variation',
-        width: 90,
+        width: 270,
         type: 'number',
         valueGetter: (params) =>
-        `${params.getValue('variation') || ''}%`,
+            `${params.value}%`,
     },
     {
         field: 'accumulatedReturn',
         headerName: 'Accumulated return',
-        width: 90,
+        width: 270,
         type: 'number',
         valueGetter: (params) =>
-        `${params.getValue('accumulated-return') || ''}%`,
+            `${params.value}%`,
     }
 ];
 
-const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
-];
+const useStyles = theme => ({
+    root: {
+        height: 1000, 
+        width: 722,
+        marginTop: theme.spacing(4),
+    }
+});
 
 class InvestmentDataTable extends Component {
 
     render() {
+        const { classes } = this.props;
+
+        console.log('rows and colums = ' + JSON.stringify(this.props.investmentData), columns);
         return (
-            <div style={{ height: 400, width: '100%' }}>
-                {/* <DataGrid rows={this.props.rows} columns={columns} pageSize={5} checkboxSelection /> */}
+            <div className={classes.root}>
+                {this.props.investmentData ?
+                    <DataGrid rows={this.props.investmentData} columns={columns} pageSize={15} /> :
+                    <p>No data to show.</p>}
             </div>
         );
     }
 }
 
-export default InvestmentDataTable;
+const mapStateToProps = state => {
+    return {
+        investmentData: state.returns.investmentData,
+    };
+}
+
+export default connect(mapStateToProps)(withStyles(useStyles)(InvestmentDataTable));
