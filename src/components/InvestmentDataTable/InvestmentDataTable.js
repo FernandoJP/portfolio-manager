@@ -36,7 +36,6 @@ class InvestmentDataTable extends Component {
     render() {
         const { classes } = this.props;
 
-        console.log('rows and colums = ' + JSON.stringify(this.props.investmentData), columns);
         return (
             <div className={classes.root}>
                 {this.props.investmentData ?

@@ -19,12 +19,10 @@ const setReturns = (state, returnsData) => {
     const updatedState = {
         returnsData: updatedReturnsData
     }
-    console.log({ updatedState });
     return updateObject(state, updatedState);
 }
 
 const setInvesment = (state, returnsData) => {
-    debugger;
     const updatedInvesmentData = returnsData.map((currentReturn,  i, returnsData) => {
         const day = currentReturn.day || currentReturn.label;
         return {
@@ -42,7 +40,6 @@ const setInvesment = (state, returnsData) => {
     const updatedState = {
         investmentData: updatedInvesmentData
     }
-    console.log({ updatedState });
     return updateObject(state, updatedState);
 }
 

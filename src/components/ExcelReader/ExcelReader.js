@@ -32,7 +32,6 @@ class ExcelReader extends Component {
     handleFile = e => {
         const file = e.target.files[0];
         this.setState({ ...this.state, file });
-        console.log(e.target.files[0]);
         var name = file.name;
         const reader = new FileReader();
         reader.onload = (evt) => {
@@ -45,8 +44,7 @@ class ExcelReader extends Component {
             /* Convert array of arrays */
             const data = XLSX.utils.sheet_to_csv(ws, { header: 1 });
             /* Update state */
-            console.log("Data>>>" + data);
-
+            
             const updatedData = this.parseData(data);
             this.props.onReadExcelFile(updatedData);
         };

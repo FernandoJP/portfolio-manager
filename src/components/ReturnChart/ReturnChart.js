@@ -6,12 +6,6 @@ import * as actions from '../../store/actions/returns';
 
 class ReturnChart extends Component {
 
-  componentDidMount = () => {
-    //debugger;
-    console.log(this.props.returnsData);
-    //this.props.onInitReturnsData(this.props.returnsData);
-  }
-
   render () {
     return <div className="App">
       <LineChart data={this.props.returnsData} width={window.innerWidth-239-150-48} height={300} />

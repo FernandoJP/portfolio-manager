@@ -44,7 +44,6 @@ class NewInvestmentData extends Component {
     }
 
     onReadExcelFileHandler = (file) => {
-        console.log({file});
         this.props.onSetReturnsData(file);
     }
 }
