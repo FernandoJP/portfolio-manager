@@ -35,7 +35,7 @@ const navigationList = [
     {
         name: 'Profile',
         icon: <FontAwesomeIcon icon={faUser} />,
-        path: 'profile',
+        path: '/profile',
         submenu: [
             { name: 'My profile', icon: <FontAwesomeIcon icon={faIdBadge} />, path: 'my-profile' },
             { name: 'Edit profile', icon: <FontAwesomeIcon icon={faUserEdit} />, path: 'edit-profile' },
@@ -44,12 +44,12 @@ const navigationList = [
     {
         name: 'Indexes',
         icon: <FontAwesomeIcon icon={faFileContract} />,
-        path: 'indexes',
+        path: '/indexes',
         submenu: [
-            { name: 'IBOV', icon: <Flags.BR />, path: 'indexes/ibov' },
-            { name: 'IFIX', icon: <FontAwesomeIcon icon={faWarehouse} style={{ fontSize: 16 }} />, path: 'indexes/ifix' },
-            { name: 'S&P 500', icon: <Flags.US />, path: 'indexes/sp500' },
-            { name: 'REITs', icon: <FontAwesomeIcon icon={faBuilding} style={{ fontSize: 18 }} />, path: 'indexes/reits' },
+            { name: 'IBOV', icon: <Flags.BR />, path: '/ibov' },
+            { name: 'IFIX', icon: <FontAwesomeIcon icon={faWarehouse} style={{ fontSize: 16 }} />, path: '/ifix' },
+            { name: 'S&P 500', icon: <Flags.US />, path: '/sp500' },
+            { name: 'REITs', icon: <FontAwesomeIcon icon={faBuilding} style={{ fontSize: 18 }} />, path: '/reits' },
         ]
     },
 ]
@@ -75,19 +75,22 @@ function NavigationItems(props) {
                         navigation.submenu.map((submenuItem) => (
                             <Collapse in={open} timeout="auto" unmountOnExit>
                                 <List component="div" disablePadding>
-                                    <ListItem button className={classes.nested}>
-                                        <ListItemIcon>
-                                            {submenuItem.icon}
-                                        </ListItemIcon>
-                                        <ListItemText primary={submenuItem.name} />
-                                    </ListItem>
+                                    <NavLink exact to={navigation.path + submenuItem.path} className={classes.navLink}>
+                                        <ListItem button className={classes.nested}>
+                                            <ListItemIcon>
+                                                {submenuItem.icon}
+                                            </ListItemIcon>
+                                            <ListItemText primary={submenuItem.name} />
+                                        </ListItem>
+                                    </NavLink>
                                 </List>
                             </Collapse>
                         ))
-                        : null}
-                </NavLink>
+                        : null
+                    }
+                </NavLink >
             ))}
-        </List>
+        </List >
     )
 }
 

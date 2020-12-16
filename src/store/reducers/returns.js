@@ -7,12 +7,9 @@ const setReturns = (state, returnsData) => {
         const day = currentReturn.day || currentReturn.label;
         return {
             label: parseInt(day),
-            value: parseFloat(returnsData.slice(0, i + 1)
-                .reduce((total, current) => {
-                    return {
-                        value: parseFloat(total.value) + (parseFloat(current.value))
-                    }
-                }).value).toFixed(2),
+            value: parseFloat(
+                getAccumulatedReturn(returnsData, i))
+                .toFixed(2),
             tooltipContent: `<b>x: </b>${day}<br><b>y: </b>${currentReturn.value}`
         }
     });
@@ -23,17 +20,14 @@ const setReturns = (state, returnsData) => {
 }
 
 const setInvesment = (state, returnsData) => {
-    const updatedInvesmentData = returnsData.map((currentReturn,  i, returnsData) => {
+    const updatedInvesmentData = returnsData.map((currentReturn, i, returnsData) => {
         const day = currentReturn.day || currentReturn.label;
         return {
             id: parseInt(day),
             variation: parseFloat(currentReturn.value),
-            accumulatedReturn: parseFloat(returnsData.slice(0, i + 1)
-                .reduce((total, current) => {
-                    return {
-                        value: parseFloat(total.value) + (parseFloat(current.value))
-                    }
-                }).value).toFixed(2)
+            accumulatedReturn: parseFloat(
+                getAccumulatedReturn(returnsData, i))
+                .toFixed(2)
         }
     });
 
@@ -43,8 +37,17 @@ const setInvesment = (state, returnsData) => {
     return updateObject(state, updatedState);
 }
 
+const getAccumulatedReturn = (returnsData, i) => {
+    return returnsData.slice(0, i + 1)
+        .reduce((total, current) => {
+            return {
+                value: parseFloat(total.value) + (parseFloat(current.value))
+            }
+        }).value;
+}
+
 const initialState = {
-    returnsData: setReturns(null, Object.values(returnsMock.data)[0] ).returnsData
+    returnsData: setReturns(null, Object.values(returnsMock.data)[0]).returnsData
 }
 
 const reducer = (state = initialState, action) => {
