@@ -113,7 +113,7 @@ function CardUI(props) {
                 <Card className={classes.root} variant="outlined">
                     <CardContent>
                         <Typography className={classes.variant2Title} color="textPrimary" gutterBottom>
-                            <props.icon className={classes.icon} style={props.iconStyle}></props.icon>
+                            <props.icon className={classes.icon} style={props.iconStyle} icon={props.fontAwesomeIcon}></props.icon>
                             <Typography component="h2" className={classes.titleText}> {props.name} </Typography>
                         </Typography>
                         {props.children}

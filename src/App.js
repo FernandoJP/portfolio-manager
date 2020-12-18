@@ -13,7 +13,7 @@ class App extends Component {
     let routes = (
         <Switch>
           <Route path="/new-investment-data" component={NewInvestmentData} />
-          <Route path="/indexes/ibov" component={IndexChart} />
+          <Route path="/indexes/:id" component={IndexChart} /> {/* id: ibov, ifix, sp500 or reits */}
           <Route path="/" exact component={PortfolioManager} />
           <Redirect to="/" />
         </Switch>

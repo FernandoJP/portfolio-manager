@@ -17,15 +17,21 @@ class CandlesticksChart extends Component {
   }
 
   async componentWillMount() {
-    const ibovCSV = await fetchCsv('/assets/indexes/ibov.csv');
-    const ibovData = parseHistoricalData(ibovCSV);
-  
-    this.setState({
-      data: ibovData
-    });
+    await this.initCsvData();
   }
 
+  async componentDidUpdate() {
+    await this.initCsvData();
+  }
 
+  async initCsvData() {
+    const csvFile = await fetchCsv(`/assets/indexes/${this.props.csvFileName}`);
+    const csvData = parseHistoricalData(csvFile);
+  
+    this.setState({
+      data: csvData
+    });
+  }
 
   generateData = (ibovData) => {
     const length = Math.round(Math.random() * 90) + 10;
