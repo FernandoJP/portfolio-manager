@@ -10,11 +10,13 @@ import createSagaMiddleware from 'redux-saga';
 import './index.css';
 import App from './App';
 import returnsReducer from './store/reducers/returns';
+import profileReducer from './store/reducers/profile';
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-  returns: returnsReducer
+  returns: returnsReducer,
+  profile: profileReducer
 });
 
 const sagaMiddleware = createSagaMiddleware();

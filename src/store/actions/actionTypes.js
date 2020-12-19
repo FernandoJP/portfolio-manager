@@ -1,2 +1,3 @@
 export const SET_RETURNS = 'SET_RETURNS';
 export const SET_INVESTMENT = 'SET_INVESTMENT';
+export const SET_PROFILE = 'SET_PROFILE';
