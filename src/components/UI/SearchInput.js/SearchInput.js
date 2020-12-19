@@ -33,7 +33,7 @@ function SearchInput(props) {
             <InputBase
                 className={classes.input}
                 placeholder="Search orders"
-                inputProps={{ 'aria-label': 'search google maps' }}
+                inputProps={{ 'aria-label': 'search orders' }}
             />
             <IconButton type="submit" className={classes.iconButton} aria-label="search">
                 <SearchIcon />

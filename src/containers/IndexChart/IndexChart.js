@@ -50,7 +50,6 @@ class IndexChart extends Component {
         
         const indexData = indexesData[this.props.match.params.id];
 
-        console.log(indexData);
         return (
             <div>
                 <CardUI name={indexData.name} variant="2" icon={indexData.icon} 

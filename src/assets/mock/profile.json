@@ -1,0 +1,17 @@
+{
+    "data": {
+        "name": "Philander Ormond",
+        "surname": "Ormond",
+        "phone": "305-885-1573",
+        "mobilePhone": "305-545-7677",
+        "street": "4575  Arbutus Drive",
+        "city": "Garcias Ville",
+        "state": "Texas",
+        "country": "USA",
+        "balance": "2541245",
+        "salary": "3500",
+        "variableIncomePercentage": "70",
+        "fixedIncomePercentage": "30",
+        "type": "Agressive"
+    }
+}

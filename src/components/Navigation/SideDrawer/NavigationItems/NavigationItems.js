@@ -37,8 +37,8 @@ const navigationList = [
         icon: <FontAwesomeIcon icon={faUser} />,
         path: '/profile',
         submenu: [
-            { name: 'My profile', icon: <FontAwesomeIcon icon={faIdBadge} />, path: 'my-profile' },
-            { name: 'Edit profile', icon: <FontAwesomeIcon icon={faUserEdit} />, path: 'edit-profile' },
+            { name: 'My profile', icon: <FontAwesomeIcon icon={faIdBadge} />, path: '/my-profile' },
+            { name: 'Edit profile', icon: <FontAwesomeIcon icon={faUserEdit} />, path: '/edit' },
         ]
     },
     {
