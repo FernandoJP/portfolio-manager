@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import { connect } from 'react-redux';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faUserEdit } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, Grid, TextField } from '@material-ui/core';
+import SaveIcon from '@material-ui/icons/Save';
 
 import CardUI from '../../components/UI/Card/CardUI';
 import RegistrationData from '../../components/Profile/RegistrationData';
@@ -10,6 +12,10 @@ import RegistrationData from '../../components/Profile/RegistrationData';
 const useStyles = theme => ({
     card: {
         width: '100%'
+    },
+    submitButton: {
+        margin: theme.spacing(2),
+        color: '#fff',
     },
 });
 
@@ -48,18 +54,28 @@ class UserProfileData extends Component {
 
     render() {
         const { classes } = this.props;
-        console.log(this.props.profileData);
+        const editMode = this.props.editMode;
+        const name = editMode ? 'Edit profile data' : 'My profile data';
+        const fontAwesomeIcon = editMode ? faUserEdit : faUser;
+
+        console.log(editMode);
         return (
             <div>
-                <CardUI name="My profile data" variant="2" 
-                    icon={FontAwesomeIcon} fontAwesomeIcon={faUser}
-                    iconStyle={{padding: 4}} className={classes.card}>
+                <CardUI name={name} variant="2" 
+                    icon={FontAwesomeIcon} fontAwesomeIcon={fontAwesomeIcon}
+                    iconStyle={{height: 33, width: 33, padding:6}} className={classes.card}>
 
                     {/* User profile data */}
-                    <RegistrationData title="Registration data" data={this.state.profileDataView} />
+                    <RegistrationData title="Registration data" data={this.state.profileDataView} editMode={editMode} />
 
                     {/* User investments data */}
-                    <RegistrationData title="Personal financial data"  data={this.state.investmentsProfileView} />
+                    <RegistrationData title="Personal financial data"  data={this.state.investmentsProfileView} editMode={editMode} />
+
+                    {editMode ? 
+                    <Button variant="contained" color="primary" className={classes.button} startIcon={<SaveIcon />} className={classes.submitButton}>
+                        Save
+                    </Button> 
+                : null }
 
                 </CardUI>
             </div>

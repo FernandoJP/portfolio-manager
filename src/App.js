@@ -16,6 +16,7 @@ class App extends Component {
           <Route path="/new-investment-data" component={NewInvestmentData} />
           <Route path="/indexes/:id" component={IndexChart} /> {/* id: ibov, ifix, sp500 or reits */}
           <Route path="/profile/my-profile" component={UserProfileData} />
+          <Route path="/profile/edit" component={() => (<UserProfileData editMode={true} />)} />
           <Route path="/" exact component={PortfolioManager} />
           <Redirect to="/" />
         </Switch>

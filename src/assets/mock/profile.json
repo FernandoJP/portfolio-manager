@@ -8,10 +8,10 @@
         "city": "Garcias Ville",
         "state": "Texas",
         "country": "USA",
-        "balance": "2541245",
-        "salary": "3500",
-        "variableIncomePercentage": "70",
-        "fixedIncomePercentage": "30",
+        "balance": "$254.245,00",
+        "salary": "$3500,00",
+        "variableIncomePercentage": "70%",
+        "fixedIncomePercentage": "30%",
         "type": "Agressive"
     }
 }

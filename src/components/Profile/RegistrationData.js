@@ -14,14 +14,14 @@ class RegistrationData extends Component {
 
     render() {
         const { classes } = this.props;
-
+        
         return (
             <Box title={this.props.title}>
                 {this.props.data.map((row, i) => {
                     return (<Grid container spacing={3}>
                         {row.map((column, j) => {
                         return (<Grid item xs={12/row.length}>
-                             <TextField disabled label={column.name} id={'rd-'+i+'-'+j} defaultValue={column.value} margin="normal" fullWidth/>
+                             <TextField disabled={!this.props.editMode} label={column.name} id={'rd-'+i+'-'+j} defaultValue={column.value} margin="normal" fullWidth/>
                         </Grid>)
                         })}
                     </Grid>)   
