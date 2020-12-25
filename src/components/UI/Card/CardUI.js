@@ -3,6 +3,7 @@ import { Card, CardContent, makeStyles, Typography } from '@material-ui/core';
 import ExpandLessIcon from '@material-ui/icons/ExpandLess';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import classNames from 'classnames';
+import PropTypes from 'prop-types';
 
 import './CardUI.css';
 
@@ -92,11 +93,11 @@ function CardUI(props) {
             return (
                 <Card className="CardUI" style={{ backgroundImage: 'url(' + props.image + ')' }}>
                     <div className={classes.cardBgImg} style={{ background: currentColor.cardColor }}>
-                        <Typography className={classNames(classes.variant1Title, classes.center)} color="textSecondary" gutterBottom>
+                        <Typography component="h2" className={classNames(classes.variant1Title, classes.center)} color="textSecondary" gutterBottom>
                             {props.description}
                         </Typography>
                         <CardContent>
-                            <Typography variant="h5" component="h2" className={classNames(classes.middleCard, classes.center)}>
+                            <Typography variant="h5" component="h3" className={classNames(classes.middleCard, classes.center)}>
                                 {props.indexPercentage >= 0 ? <ExpandLessIcon className={classes.earningStatusIcon} /> : <ExpandMoreIcon className={classes.earningStatusIcon} /> }
                                 {props.indexPercentage}
                             </Typography>
@@ -125,5 +126,10 @@ function CardUI(props) {
     }
 
 }
+
+CardUI.propTypes = {
+    variant: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired
+};
 
 export default CardUI;
